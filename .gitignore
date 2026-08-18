@@ -9,11 +9,14 @@ backend/StatusEnzin.Api/bin/
 backend/StatusEnzin.Api/obj/
 
 # Node / Next.js
+node_modules/
+.next/
+out/
+tsconfig.tsbuildinfo
+next-env.d.ts
 frontend/node_modules/
 frontend/.next/
 frontend/out/
-frontend/tsconfig.tsbuildinfo
-frontend/next-env.d.ts
 
 # OS / editor
 .DS_Store
