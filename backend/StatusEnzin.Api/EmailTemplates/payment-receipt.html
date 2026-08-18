@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Payment receipt</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f5; color:#ededed; font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Your {{{PLAN_NAME}}} plan is active. Payment received.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f4f5;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background-color:#0a0a0a; border:1px solid #1f1f1f; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.18);">
+
+          <tr>
+            <td align="center" style="padding:36px 32px 0 32px;">
+              <img src="{{{LOGO_URL}}}" alt="StatusEnzin" height="40" style="display:block; height:40px; width:auto; max-width:260px; border:0;" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 32px 0 32px;">
+              <div style="height:1px; background-color:#1f1f1f;"></div>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:28px 32px 0 32px;">
+              <div style="display:inline-block; padding:4px 12px; background-color:#052e1b; border:1px solid #30ff87; border-radius:999px; font-size:11px; letter-spacing:1px; color:#30ff87; text-transform:uppercase; font-family:Consolas,'SF Mono',Menlo,monospace;">Payment receipt</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:20px 32px 0 32px;">
+              <h1 style="margin:0; font-size:26px; line-height:1.3; font-weight:700; color:#ffffff;">Thanks, {{{NAME}}} &mdash; your upgrade is live</h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:16px 40px 0 40px;">
+              <p style="margin:0; font-size:15px; line-height:1.7; color:#888888; text-align:center;">Your payment was processed successfully and your <strong style="color:#ededed;">{{{PLAN_NAME}}}</strong> plan is now active. Here are your billing details:</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px 40px 0 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#111111; border:1px solid #222222; border-radius:12px;">
+                <tr>
+                  <td style="padding:4px 22px; width:50%;">
+                    <div style="padding:12px 0; border-bottom:1px solid #1f1f1f; font-size:11px; letter-spacing:1px; color:#555555; text-transform:uppercase;">Plan</div>
+                    <div style="padding:10px 0; font-size:14px; font-weight:600; color:#ededed;">{{{PLAN_NAME}}}</div>
+                  </td>
+                  <td style="padding:4px 22px; width:50%;">
+                    <div style="padding:12px 0; border-bottom:1px solid #1f1f1f; font-size:11px; letter-spacing:1px; color:#555555; text-transform:uppercase;">Billing cycle</div>
+                    <div style="padding:10px 0; font-size:14px; font-weight:600; color:#ededed;">{{{BILLING_CYCLE}}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 22px; width:50%;">
+                    <div style="padding:12px 0; border-bottom:1px solid #1f1f1f; font-size:11px; letter-spacing:1px; color:#555555; text-transform:uppercase;">Amount paid</div>
+                    <div style="padding:10px 0; font-size:16px; font-weight:700; color:#30ff87;">{{{AMOUNT_PAID}}}</div>
+                  </td>
+                  <td style="padding:4px 22px; width:50%;">
+                    <div style="padding:12px 0; border-bottom:1px solid #1f1f1f; font-size:11px; letter-spacing:1px; color:#555555; text-transform:uppercase;">Renewal date</div>
+                    <div style="padding:10px 0; font-size:14px; font-weight:600; color:#ededed;">{{{RENEWAL_DATE}}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding:4px 22px 16px 22px;">
+                    <div style="padding:12px 0 0 0; font-size:11px; letter-spacing:1px; color:#555555; text-transform:uppercase;">Transaction ID</div>
+                    <div style="padding:6px 0 0 0; font-size:13px; color:#a3a3a3; word-break:break-all; font-family:Consolas,'SF Mono',Menlo,monospace;">{{{TRANSACTION_ID}}}</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:28px 32px 0 32px;">
+              <a href="{{{BILLING_URL}}}" style="display:inline-block; padding:13px 32px; background-color:#30ff87; color:#000000; font-size:14px; font-weight:700; text-decoration:none; border-radius:8px;">Manage billing</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px 40px 0 40px;">
+              <p style="margin:0; font-size:13px; line-height:1.7; color:#555555; text-align:center;">This email is your receipt. Keep it for your records &mdash; no tax invoices are issued automatically.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:28px 40px 32px 40px;">
+              <div style="height:1px; background-color:#1f1f1f; margin-bottom:20px;"></div>
+              <p style="margin:0; font-size:12px; line-height:1.8; color:#555555; text-align:center;">
+                &copy; 2026 <a href="{{{APP_URL}}}" style="color:#30ff87; text-decoration:none;">{{{APP_NAME}}}</a> &middot; Uptime monitoring &amp; public status pages.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

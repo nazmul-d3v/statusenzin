@@ -1,0 +1,27 @@
+# Secrets — never commit real keys
+backend/StatusEnzin.Api/.env
+frontend/.env.local
+*.env
+!.env.example
+
+# .NET build output
+backend/StatusEnzin.Api/bin/
+backend/StatusEnzin.Api/obj/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+frontend/next-env.d.ts
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vs/
+.idea/
+
+# Logs
+*.log
+

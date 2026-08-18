@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 93%;
+  }
+
+  body {
+    background-color: #000000;
+    color: #ededed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* Global Text Selection: #30ff87 background with crisp dark variant text */
+::selection {
+  background-color: #30ff87;
+  color: #042713;
+}
+
+::-moz-selection {
+  background-color: #30ff87;
+  color: #042713;
+}
+
+/* Vercel + Brand Green (#30ff87) Glowing Gradient Effects */
+.bg-vercel-mesh {
+  background-image: 
+    radial-gradient(at 50% 0%, rgba(48, 255, 135, 0.18) 0px, transparent 55%),
+    radial-gradient(at 100% 100%, rgba(48, 255, 135, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(48, 255, 135, 0.1) 0px, transparent 50%);
+}
+
+.bg-brand-glow {
+  background: radial-gradient(circle at center, rgba(48, 255, 135, 0.15) 0%, transparent 70%);
+}
+
+.vercel-card {
+  background: #0a0a0a;
+  border: 1px solid #222222;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vercel-card:hover {
+  border-color: rgba(0, 204, 94, 0.5);
+  box-shadow: 0 4px 25px rgba(0, 204, 94, 0.12);
+}
+
+.vercel-input {
+  background: #000000;
+  border: 1px solid #222222;
+  color: #ededed;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.vercel-input:hover {
+  border-color: #333333;
+}
+
+.vercel-input:focus {
+  outline: none;
+  border-color: #00cc5e; /* dark variant of #30ff87 */
+  box-shadow: 0 0 0 1px rgba(0, 204, 94, 0.35); /* thin 1px outline */
+}
+
+.vercel-button-primary {
+  background-color: #30ff87;
+  color: #000000;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 0 20px rgba(48, 255, 135, 0.25);
+}
+
+.vercel-button-primary:hover {
+  background-color: #00cc5e; /* dark variant of #30ff87 */
+  color: #000000;
+  box-shadow: 0 0 25px rgba(0, 204, 94, 0.4);
+  transform: translateY(-1px);
+}
+
+.vercel-button-primary:active {
+  transform: translateY(0);
+}
+
+.vercel-button-secondary {
+  background-color: #111111;
+  color: #ededed;
+  border: 1px solid #222222;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+.vercel-button-secondary:hover {
+  background-color: #1a1a1a;
+  border-color: #00cc5e;
+  color: #30ff87;
+}
+
+/* Status indicator pulse ring */
+@keyframes status-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(48, 255, 135, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(48, 255, 135, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(48, 255, 135, 0);
+  }
+}
+
+.pulse-operational {
+  animation: status-pulse 2s infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Day Mode (Light Theme) Overrides */
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.light header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .bg-black,
+html.light .bg-neutral-950,
+html.light .bg-neutral-900 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-neutral-400,
+html.light .text-neutral-300,
+html.light .text-neutral-200,
+html.light .text-vercel-muted {
+  color: #475569 !important;
+}
+
+html.light .border-neutral-800,
+html.light .border-neutral-700,
+html.light .border-vercel-border {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .vercel-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+html.light .vercel-card:hover {
+  border-color: #00cc5e !important;
+  box-shadow: 0 4px 20px rgba(0, 204, 94, 0.15) !important;
+}
+
+html.light .vercel-input {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light .vercel-button-secondary {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html.light .vercel-button-secondary:hover {
+  background-color: #e2e8f0 !important;
+  color: #00883b !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+

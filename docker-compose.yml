@@ -1,0 +1,86 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-statusenzin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      POSTGRES_DB: ${DB_NAME:-statusenzin}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-statusenzin} -d ${DB_NAME:-statusenzin}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - statusenzin
+
+  api:
+    build:
+      context: ./backend/StatusEnzin.Api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-8080}:8080"
+    environment:
+      - DATABASE_URL=Host=db;Port=5432;Database=${DB_NAME:-statusenzin};Username=${DB_USER:-statusenzin};Password=${DB_PASSWORD}
+      - PORT=8080
+      - JWT_KEY=${JWT_KEY:?Set JWT_KEY in .env}
+      - JWT_ISSUER=${JWT_ISSUER:-StatusEnzin}
+      - JWT_AUDIENCE=${JWT_AUDIENCE:-StatusEnzinApp}
+      - SUPER_ADMIN_EMAIL=${ADMIN_EMAIL:?Set ADMIN_EMAIL in .env}
+      - SUPER_ADMIN_PASSWORD=${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env}
+      - SUPER_ADMIN_FULL_NAME=${ADMIN_FULL_NAME:-Admin}
+      - SUPER_ADMIN_TENANT_NAME=${ADMIN_TENANT_NAME:-Default}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-*}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - STRIPE_PRO_MONTHLY_PRICE_ID=${STRIPE_PRO_MONTHLY_PRICE_ID:-}
+      - STRIPE_BUSINESS_MONTHLY_PRICE_ID=${STRIPE_BUSINESS_MONTHLY_PRICE_ID:-}
+      - STRIPE_PRO_ANNUAL_PRICE_ID=${STRIPE_PRO_ANNUAL_PRICE_ID:-}
+      - STRIPE_BUSINESS_ANNUAL_PRICE_ID=${STRIPE_BUSINESS_ANNUAL_PRICE_ID:-}
+      - STRIPE_COUPON_SAVE20=${STRIPE_COUPON_SAVE20:-}
+      - STRIPE_COUPON_WELCOME20=${STRIPE_COUPON_WELCOME20:-}
+      - STRIPE_COUPON_PROMO10=${STRIPE_COUPON_PROMO10:-}
+      - STRIPE_COUPON_HALFPRICE=${STRIPE_COUPON_HALFPRICE:-}
+      - RESEND_API_KEY=${RESEND_API_KEY:-}
+      - RESEND_FROM_EMAIL=${RESEND_FROM_EMAIL:-alerts@statusenzin.me}
+      - MONITOR_CHECK_INTERVAL_SECONDS=${MONITOR_CHECK_INTERVAL_SECONDS:-30}
+      - MONITOR_HTTP_TIMEOUT_SECONDS=${MONITOR_HTTP_TIMEOUT_SECONDS:-15}
+      - SEED_DEMO_DATA=${SEED_DEMO_DATA:-false}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - statusenzin
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    environment:
+      - PORT=3000
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - statusenzin
+
+networks:
+  statusenzin:
+
+volumes:
+  pgdata:
