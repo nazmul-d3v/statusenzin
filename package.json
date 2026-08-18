@@ -1,0 +1,13 @@
+{
+  "name": "statusenzin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "npm start --prefix frontend"
+  },
+  "dependencies": {
+    "next": "^15.1.7"
+  }
+}
