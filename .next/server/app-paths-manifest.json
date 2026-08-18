@@ -1,0 +1,19 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/forgot-password/page": "app/forgot-password/page.js",
+  "/privacy/page": "app/privacy/page.js",
+  "/reset-password/page": "app/reset-password/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/status/[slug]/page": "app/status/[slug]/page.js",
+  "/terms/page": "app/terms/page.js",
+  "/dashboard/billing/page": "app/dashboard/billing/page.js",
+  "/dashboard/incidents/page": "app/dashboard/incidents/page.js",
+  "/dashboard/monitors/[id]/page": "app/dashboard/monitors/[id]/page.js",
+  "/dashboard/settings/page": "app/dashboard/settings/page.js",
+  "/dashboard/status-pages/page": "app/dashboard/status-pages/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/platform-admin/page": "app/platform-admin/page.js"
+}
